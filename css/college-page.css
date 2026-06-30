@@ -1,0 +1,338 @@
+/* ============================================================
+   COLLEGE PAGE — Hero, stats, content layout, sidebar,
+                  courses grid, recruiters, CTA
+   ============================================================ */
+
+/* --- College hero with dark overlay on image --- */
+.college-hero {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4xl) 0 var(--space-3xl);
+  overflow: hidden;
+}
+
+.college-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Dark gradient overlay */
+.college-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(28, 18, 16, 0.9) 0%,
+    rgba(28, 18, 16, 0.55) 50%,
+    rgba(28, 18, 16, 0.35) 100%
+  );
+}
+
+.college-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.college-hero h1 {
+  font-size: var(--text-5xl);
+  color: #fff;
+  margin-bottom: var(--space-md);
+}
+
+.college-hero .section-badge {
+  background: rgba(15,23,42, 0.12);
+  color: var(--primary-light);
+}
+
+.college-hero-subtitle {
+  font-size: var(--text-lg);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+}
+
+
+/* --- Stat cards --- */
+.college-stats {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: calc(-1 * var(--space-2xl));
+  position: relative;
+  z-index: 3;
+  padding: 0 var(--space-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.college-stat-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-2xl);
+  text-align: center;
+  min-width: 180px;
+  flex: 1;
+  max-width: 240px;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.college-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.college-stat-card .stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+
+.college-stat-card .stat-icon svg { width: 20px; height: 20px; }
+
+.college-stat-card .stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.college-stat-card .stat-label {
+  font-size: var(--text-sm);
+  color: var(--text-dark-secondary);
+}
+
+
+/* --- Content layout: main + sidebar --- */
+.college-content {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-white);
+}
+
+.college-content-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Main content area */
+.college-main h2 {
+  font-size: var(--text-3xl);
+  color: var(--text-dark);
+  margin-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+  border-left: 4px solid var(--primary);
+}
+
+.college-main h3 {
+  font-size: var(--text-xl);
+  color: var(--text-dark);
+  margin: var(--space-2xl) 0 var(--space-md);
+}
+
+.college-main h4 {
+  font-size: var(--text-lg);
+  color: var(--text-dark);
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.college-main p {
+  color: var(--text-dark-secondary);
+  margin-bottom: var(--space-lg);
+  line-height: 1.85;
+}
+
+.college-main ul { margin-bottom: var(--space-xl); }
+
+.college-main ul li {
+  position: relative;
+  padding-left: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  color: var(--text-dark-secondary);
+  line-height: 1.7;
+}
+
+.college-main ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+}
+
+
+/* --- Courses grid --- */
+.courses-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0 var(--space-2xl);
+}
+
+.course-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 12px 16px;
+  background: var(--bg-gray);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--text-dark);
+  transition: border-color var(--duration-fast);
+}
+
+.course-pill:hover { border-color: var(--primary-100); }
+.course-pill svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; }
+
+
+/* --- Recruiters list --- */
+.recruiters-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0 var(--space-2xl);
+}
+
+.recruiter-tag {
+  padding: 8px 16px;
+  background: var(--bg-gray);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--text-dark-secondary);
+  font-weight: 500;
+}
+
+
+/* --- Sidebar --- */
+.college-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.sidebar-card h4 {
+  color: var(--text-dark);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-item {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar-item:last-child { border-bottom: none; }
+.sidebar-item-label { font-size: var(--text-sm); color: var(--text-dark-tertiary); }
+.sidebar-item-value { font-size: var(--text-sm); font-weight: 600; color: var(--text-dark); }
+
+.sidebar-cta { margin-top: var(--space-xl); }
+.sidebar-cta .btn { width: 100%; text-align: center; }
+
+.sidebar-cta .phone-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+
+/* --- College CTA section --- */
+.college-cta {
+  background: var(--bg-dark);
+  padding: var(--space-4xl) 0;
+  text-align: center;
+}
+
+.college-cta h2 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.college-cta p {
+  color: var(--text-secondary);
+  margin: 0 auto var(--space-lg);
+  max-width: 600px;
+}
+
+.college-cta .phone-display {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--accent-amber);
+  margin-bottom: var(--space-xl);
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .college-hero h1 { font-size: var(--text-4xl); }
+}
+
+@media (max-width: 768px) {
+  .college-hero {
+    min-height: 250px;
+    padding-top: 80px;
+    padding-bottom: var(--space-xl);
+  }
+  .college-hero h1 { font-size: var(--text-2xl); }
+  .college-hero-subtitle { font-size: var(--text-base); }
+  .college-hero-bg { background-attachment: scroll; }
+  .college-content-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
+  .college-sidebar { position: static; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .college-stat-card { min-width: 120px; padding: var(--space-md); }
+  .college-main h2 { font-size: var(--text-2xl); }
+  .college-main h3 { font-size: var(--text-lg); }
+  .college-content { padding: var(--space-2xl) 0; }
+  .college-cta { padding: var(--space-2xl) 0; }
+  .college-cta .phone-display { font-size: var(--text-2xl); }
+}
+
+@media (max-width: 480px) {
+  .college-hero { min-height: 200px; padding-top: 60px; }
+  .college-hero h1 { font-size: var(--text-xl); }
+  .college-stats { gap: var(--space-sm); padding: 0; }
+  .college-stat-card { min-width: 0; flex: 1; padding: var(--space-md) var(--space-sm); }
+  .college-stat-card .stat-value { font-size: var(--text-lg); }
+  .college-stat-card .stat-label { font-size: var(--text-xs); }
+  .college-main h2 { font-size: var(--text-xl); padding-left: var(--space-sm); }
+  .recruiters-list { gap: var(--space-xs); }
+  .recruiter-tag { padding: 6px 12px; font-size: var(--text-xs); }
+}
+
+@media (max-width: 360px) {
+  .college-hero h1 { font-size: var(--text-lg); }
+  .college-stat-card .stat-value { font-size: var(--text-base); }
+}

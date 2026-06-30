@@ -1,0 +1,10 @@
+# EduAdmission — robots.txt
+User-agent: *
+Allow: /
+
+# Block admin dashboard from search indexing
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://eduvistaconsulting.com/sitemap.xml

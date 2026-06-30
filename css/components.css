@@ -1,0 +1,290 @@
+/* ============================================================
+   COMPONENTS — Buttons, cards, icon circles, form inputs,
+                accordion, stars, back-to-top, whatsapp float
+   ============================================================ */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 14px 30px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+/* Primary — royal-blue → sky-blue gradient */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: var(--shadow-blue);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.07) saturate(1.05);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.38);
+  transform: translateY(-2px);
+}
+
+/* Outline — adapts to context */
+.btn-outline {
+  background: transparent;
+  color: inherit;
+  border: 1.5px solid currentColor;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* White button (for dark bg) */
+.btn-white {
+  background: var(--bg-white);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Outline dark (for light bg sections) */
+.btn-outline-dark {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid var(--border-color);
+}
+
+.btn-outline-dark:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Sizes */
+.btn-sm { padding: 10px 22px; font-size: var(--text-xs); }
+.btn-lg { padding: 16px 36px; font-size: var(--text-base); }
+
+
+/* --- Cards --- */
+.card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+
+/* --- Icon circles --- */
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.icon-circle.green  { background: rgba(31, 107, 58, 0.10);  color: var(--accent-green); }
+.icon-circle.blue   { background: rgba(15,23,42, 0.08);   color: var(--navy); }
+.icon-circle.violet { background: rgba(29, 65, 114, 0.10);  color: var(--navy-3); }
+.icon-circle.orange { background: rgba(37,99,235, 0.09);  color: var(--accent); }
+.icon-circle.amber  { background: rgba(56,189,248, 0.14); color: var(--accent-amber-dark); }
+.icon-circle svg { width: 24px; height: 24px; }
+
+
+/* --- Form inputs --- */
+.form-group { margin-bottom: var(--space-md); }
+
+.form-group label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-dark-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.form-input {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-dark);
+  font-size: var(--text-base);
+  transition: border-color var(--duration-normal), box-shadow var(--duration-normal);
+}
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15,23,42, 0.12);
+}
+
+.form-input::placeholder { color: var(--text-dark-tertiary); }
+
+textarea.form-input { resize: vertical; min-height: 120px; }
+
+select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+
+/* --- Accordion --- */
+.accordion-item {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-white);
+  transition: box-shadow var(--duration-normal);
+}
+
+.accordion-item.active {
+  box-shadow: var(--shadow-card);
+  border-color: var(--primary-100);
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: var(--text-dark);
+}
+
+.accordion-item.active .accordion-header { color: var(--primary); }
+
+.accordion-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-normal);
+  flex-shrink: 0;
+  color: var(--text-dark-tertiary);
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out);
+}
+
+.accordion-content {
+  padding: 0 24px 20px;
+  color: var(--text-dark-secondary);
+  line-height: 1.8;
+}
+
+
+/* --- Stars --- */
+.stars { display: flex; gap: 2px; }
+.stars svg { width: 16px; height: 16px; fill: var(--accent-amber); }
+
+
+/* --- Back to top --- */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  color: var(--text-dark-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: var(--z-sticky);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--duration-normal);
+  box-shadow: var(--shadow-md);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.back-to-top svg { width: 20px; height: 20px; }
+
+
+/* --- WhatsApp float (no pulse animation) --- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-sticky);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+  transition: transform var(--duration-normal);
+}
+
+.whatsapp-float:hover { transform: scale(1.08); }
+.whatsapp-float svg { width: 28px; height: 28px; }
+
+@media (max-width: 768px) {
+  .whatsapp-float { display: none; }
+  .back-to-top { bottom: 90px; right: 16px; width: 40px; height: 40px; }
+  .btn { padding: 12px 24px; font-size: var(--text-sm); }
+  .btn-lg { padding: 14px 28px; font-size: var(--text-sm); }
+  .form-input { padding: 12px 14px; font-size: 16px; } /* 16px prevents iOS zoom */
+}
+
+@media (max-width: 480px) {
+  .btn { padding: 10px 20px; font-size: var(--text-xs); }
+  .btn-lg { padding: 12px 24px; font-size: var(--text-sm); }
+  .icon-circle { width: 44px; height: 44px; }
+  .icon-circle svg { width: 20px; height: 20px; }
+  .back-to-top { width: 36px; height: 36px; bottom: 80px; right: 12px; }
+  .back-to-top svg { width: 16px; height: 16px; }
+}

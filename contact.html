@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta name="description" content="Contact Binayak Consultancy for expert guidance on engineering college admissions. Reach out via phone, email, or WhatsApp for personalized counseling.">
+  <title>Contact Us — Binayak Consultancy</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <style>
+    /* === Contact page hero with embedded form === */
+    .contact-hero {
+      position: relative;
+      background: var(--gradient-hero);
+      padding: 100px 0 60px;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 40% at 20% 0%, rgba(56,189,248, 0.18), transparent 60%),
+        radial-gradient(ellipse 50% 30% at 90% 100%, rgba(15,23,42, 0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .contact-hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+      gap: 56px;
+      align-items: start;
+    }
+    .contact-copy { color: var(--text-primary); }
+    .contact-copy .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(56,189,248, 0.15);
+      border: 1px solid rgba(56,189,248, 0.3);
+      color: var(--accent-amber);
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .contact-copy .hero-badge .pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent-amber);
+      box-shadow: 0 0 0 0 var(--accent-amber);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(56,189,248, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(56,189,248, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(56,189,248, 0); }
+    }
+    .contact-copy h1 {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      line-height: 1.1; font-weight:600;
+      color: #fff;
+      margin: 0 0 18px;
+    }
+    .contact-copy .gradient-text {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .contact-copy .lead {
+      color: var(--text-secondary);
+      font-size: 1.05rem; line-height: 1.65;
+      max-width: 540px;
+      margin: 0 0 32px;
+    }
+    .contact-channels {
+      display: flex; flex-direction: column; gap: 14px; margin-top: 28px;
+    }
+    .contact-channel {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: background var(--duration-fast), border-color var(--duration-fast), transform var(--duration-fast);
+    }
+    .contact-channel:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(56,189,248, 0.4);
+      transform: translateX(2px);
+    }
+    .contact-channel-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-channel-icon.amber { background: rgba(56,189,248,0.18); color: var(--accent-amber); }
+    .contact-channel-icon.green { background: rgba(34,197,94,0.18); color: #22c55e; }
+    .contact-channel-icon.gray { background: rgba(255,255,255,0.08); color: var(--text-secondary); }
+    .contact-channel-icon svg { width: 20px; height: 20px; }
+    .contact-channel .lbl { font-size: 0.75rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 2px; }
+    .contact-channel .val { font-size: 0.95rem; color: var(--text-primary); font-weight: 600; }
+
+    /* Right: form card */
+    .contact-form-card {
+      position: relative;
+      background: #fff;
+      border-radius: var(--radius-2xl);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-2xl);
+    }
+    .contact-form-card h3 {
+      font-size: 1.5rem; font-weight: 700; color: var(--text-dark);
+      margin: 0 0 6px;
+    }
+    .contact-form-card .form-intro {
+      font-size: 0.9rem; color: var(--text-dark-secondary);
+      margin: 0 0 22px;
+    }
+    .contact-form-card .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-form-card .form-group { margin-bottom: 14px; }
+    .contact-form-card label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--text-dark-secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .contact-form-card .form-input {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: var(--bg-gray);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      transition: border-color var(--duration-fast), background var(--duration-fast);
+    }
+    .contact-form-card .form-input:focus {
+      outline: none;
+      border-color: var(--accent-amber);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.10);
+    }
+    .contact-form-card .form-input::placeholder { color: var(--text-dark-tertiary); }
+    .contact-form-card textarea.form-input { resize: vertical; min-height: 90px; }
+    .contact-form-card .submit-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: var(--gradient-primary);
+      color: #fff;
+      border: 0;
+      border-radius: var(--radius-md);
+      font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+      margin-top: 8px;
+    }
+    .contact-form-card .submit-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-blue); }
+    .contact-form-card .legal {
+      font-size: 0.72rem; color: var(--text-dark-tertiary);
+      margin: 12px 0 0;
+      text-align: center;
+    }
+    .contact-form-card .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px 12px;
+    }
+    .contact-form-card .form-success.show { display: block; }
+    .contact-form-card .form-success-icon {
+      width: 64px; height: 64px; margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.15);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-form-card .form-success-icon svg { width: 30px; height: 30px; color: #22c55e; }
+    .contact-form-card .form-success h3 { color: var(--text-dark); margin: 0 0 8px; }
+    .contact-form-card .form-success p { color: var(--text-dark-secondary); margin: 0; font-size: 0.95rem; }
+    .contact-form-card.submitted .contact-form { display: none; }
+
+    /* Mobile: stack to single column */
+    @media (max-width: 980px) {
+      .contact-hero { padding: 80px 0 40px; }
+      .contact-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form-card { padding: 28px 22px; }
+      .contact-copy .lead { max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .contact-hero { padding: 64px 0 32px; }
+      .contact-form-card { padding: 24px 18px; border-radius: var(--radius-lg); }
+      .contact-form-card .form-row { grid-template-columns: 1fr; }
+      .contact-channel { padding: 12px 14px; gap: 12px; }
+      .contact-channel-icon { width: 36px; height: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><span class="brand-wordmark">Binayak<span class="brand-accent"> Consultancy</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">
+            Colleges
+            <svg class="chevron" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <div class="dropdown-panel">
+            <div class="dropdown-section-label">Engineering Colleges</div>
+            <div class="dropdown-grid">
+              <a href="colleges/rv-college.html" class="dropdown-item">
+                <img src="images/rvce-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">RV University</span>
+              </a>
+              <a href="colleges/ramaiah.html" class="dropdown-item">
+                <img src="images/ramaiah-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Ramaiah Institute of Technology</span>
+              </a>
+              <a href="colleges/bms-college.html" class="dropdown-item">
+                <img src="images/bms-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">BMS College of Engineering</span>
+              </a>
+              <a href="colleges/dayananda-sagar.html" class="dropdown-item">
+                <img src="images/dsce-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Dayananda Sagar College</span>
+              </a>
+              <a href="colleges/nitte.html" class="dropdown-item">
+                <img src="images/nitte-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Nitte Meenakshi Institute</span>
+              </a>
+              <a href="colleges/sir-mvit.html" class="dropdown-item">
+                <img src="images/smvit-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Sir MVIT</span>
+              </a>
+              <a href="colleges/bit.html" class="dropdown-item">
+                <img src="images/bit-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Bangalore Institute of Technology</span>
+              </a>
+              <a href="colleges/cmrit.html" class="dropdown-item">
+                <img src="images/cmrit-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">CMR Institute of Technology</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="contact.html" class="nav-cta">Get Guidance</a>
+      </div>
+
+      <div class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Panel -->
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <div>
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle">
+        Colleges
+        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <div class="mobile-dropdown-content">
+        <a href="colleges/rv-college.html">RV University</a>
+        <a href="colleges/ramaiah.html">Ramaiah Institute of Technology</a>
+        <a href="colleges/bms-college.html">BMS College of Engineering</a>
+        <a href="colleges/dayananda-sagar.html">Dayananda Sagar College</a>
+        <a href="colleges/nitte.html">Nitte Meenakshi Institute</a>
+        <a href="colleges/sir-mvit.html">Sir MVIT</a>
+        <a href="colleges/bit.html">Bangalore Institute of Technology</a>
+        <a href="colleges/cmrit.html">CMR Institute of Technology</a>
+      </div>
+    </div>
+    <a href="about.html" class="mobile-nav-link">About Us</a>
+    <a href="contact.html" class="mobile-nav-link active">Contact Us</a>
+    <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top: 24px; display: block; text-align: center;">Get Guidance</a>
+  </div>
+
+  <!-- ========== HERO + FORM ========== -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero-grid">
+
+        <!-- Left: copy + reach-us channels -->
+        <div class="contact-copy">
+          <div class="hero-badge"><span class="pulse"></span> Contact</div>
+          <h1>Get in Touch with <span class="gradient-text">Binayak Consultancy</span></h1>
+          <p class="lead">Looking for guidance on engineering admissions, entrance exams, or course choices? Our counselling team responds the same working day — by phone, WhatsApp, or via the form on the right.</p>
+
+          <div class="contact-channels">
+            <a href="tel:+919765785479" class="contact-channel">
+              <div class="contact-channel-icon amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+              </div>
+              <div>
+                <div class="lbl">Call</div>
+                <div class="val">+91-97657-85479</div>
+              </div>
+            </a>
+            <a href="https://wa.me/919765785479" target="_blank" rel="noopener" class="contact-channel">
+              <div class="contact-channel-icon green">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <div class="lbl">WhatsApp</div>
+                <div class="val">Chat with us instantly</div>
+              </div>
+            </a>
+            <div class="contact-channel" style="cursor:default">
+              <div class="contact-channel-icon gray">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div>
+                <div class="lbl">Working Hours</div>
+                <div class="val">Mon&ndash;Sat &middot; 10am to 6pm IST</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="contact-form-card" id="contactFormCard">
+          <h3>Request Free Guidance</h3>
+          <p class="form-intro">Fill the form &mdash; our counsellor will reach out the same working day.</p>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-phone">Phone *</label>
+                <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="10-digit phone" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" class="form-input" placeholder="your@email.com">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-course">Preferred Course</label>
+                <input type="text" id="contact-course" name="course" class="form-input" placeholder="e.g., B.Tech CSE">
+              </div>
+              <div class="form-group">
+                <label for="contact-city">Preferred City</label>
+                <input type="text" id="contact-city" name="city" class="form-input" placeholder="e.g., Bengaluru">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message (optional)</label>
+              <textarea id="contact-message" name="message" class="form-input" rows="3" placeholder="Tell us about your goals or specific queries..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Inquiry</button>
+            <p class="legal">By submitting this form, I hereby authorise <strong>Binayak Consultancy</strong> and its representatives to contact me via phone call, SMS, WhatsApp, or email regarding my enquiry and related educational services.</p>
+          </form>
+
+          <div class="form-success" id="contactSuccess">
+            <div class="form-success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3>Thank You!</h3>
+            <p>Your inquiry has been received. Our counsellor will reach out shortly.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT INFO CARDS ========== -->
+  <section class="section light light-section">
+    <div class="container">
+      <div class="text-center mb-3xl">
+        <div class="section-badge"><span class="dot"></span> Reach Out</div>
+        <h2 class="section-title">Contact <span class="gradient-text">Information</span></h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;" class="stagger-children">
+
+        <!-- Office Contact Card -->
+        <div class="service-card reveal" style="text-align: left;">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Office Contact Information</h4>
+          <div style="margin-top: 1rem;">
+            <p style="margin-bottom: 0.75rem;"><strong>Binayak Consultancy</strong></p>
+            <p style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@binayak.com" style="color: var(--color-blue-500);">info@binayak.com</a>
+            </p>
+            <p style="margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+              <a href="tel:+919765785479" style="color: var(--color-blue-500);">+91-97657-85479</a>
+            </p>
+            <p style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; margin-top: 3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <a href="https://maps.google.com/?q=F11%2C%20D%20Block%2C%20Fortuna%20Icon%20Apartment%2C%20Sahakarnagar%20Main%20Rd%2C%20Sahakar%20Nagar%2C%20Bengaluru%20560092" target="_blank" rel="noopener" style="color: var(--color-blue-500);">F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar, Bengaluru, Karnataka 560092</a>
+            </p>
+          </div>
+          <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,0.08);">
+            <h5 style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem;">Working Hours</h5>
+            <p style="margin-bottom: 0.25rem;">Monday - Saturday: 10:00 AM - 6:00 PM</p>
+            <p>Sunday: Closed</p>
+          </div>
+        </div>
+
+        <!-- Guidance Support Card -->
+        <div class="service-card reveal" style="text-align: left;">
+          <div class="icon-circle emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>Admission Guidance Support</h4>
+          <p style="margin-bottom: 1rem;">Students may contact our team for assistance with:</p>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.65rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Understanding admission eligibility requirements</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.65rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Information about entrance examination pathways</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.65rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Course and institution comparison</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.65rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Counseling process awareness</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.65rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" style="flex-shrink: 0; margin-top: 2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Admission documentation preparation guidance</span>
+            </li>
+          </ul>
+          <p style="margin-top: 1rem; font-size: 0.88rem; color: var(--text-light); font-style: italic;">Our team provides independent guidance based on publicly available institutional information and admission policies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAP ========== -->
+  <section class="section light light-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="text-center mb-3xl">
+        <div class="section-badge"><span class="dot"></span> Visit Us</div>
+        <h2 class="section-title">Find Us on the <span class="gradient-text">Map</span></h2>
+        <p class="section-desc mx-auto">F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar, Bengaluru, Karnataka 560092</p>
+      </div>
+      <div style="max-width: 1000px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.08);">
+        <iframe
+          title="Binayak Consultancy office location on Google Maps"
+          src="https://maps.google.com/maps?q=F11%2C%20D%20Block%2C%20Fortuna%20Icon%20Apartment%2C%20Sahakarnagar%20Main%20Rd%2C%20Sahakar%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560092&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          width="100%" height="420" style="border: 0; display: block;"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <div class="text-center" style="margin-top: 1.5rem;">
+        <a href="https://maps.google.com/?q=F11%2C%20D%20Block%2C%20Fortuna%20Icon%20Apartment%2C%20Sahakarnagar%20Main%20Rd%2C%20Sahakar%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560092" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DISCLAIMER ========== -->
+  <section class="disclaimer-bar">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> Binayak Consultancy is an independent admission guidance and counseling firm. We are not affiliated with any college or university unless explicitly stated, and final admission decisions rest entirely with the respective institutions.</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><span class="brand-wordmark">Binayak<span class="brand-accent"> Consultancy</span></span>
+          </a>
+          <p>Your trusted guide to engineering college admissions in India. Expert counseling for a brighter future.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/share/1ETuBjN2vb/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/binayakconsultancy" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Colleges</h5>
+          <ul>
+            <li><a href="colleges/rv-college.html">RV University</a></li>
+            <li><a href="colleges/ramaiah.html">Ramaiah IT</a></li>
+            <li><a href="colleges/bms-college.html">BMS College</a></li>
+            <li><a href="colleges/nitte.html">Nitte Meenakshi</a></li>
+            <li><a href="colleges/dayananda-sagar.html">Dayananda Sagar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+            <span>+91-97657-85479</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@binayak.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar, Bengaluru, Karnataka 560092</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>Mon - Sat: 10am - 6pm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Binayak Consultancy. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-and-conditions.html">Terms & Conditions</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== FIXED ELEMENTS ========== -->
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919765785479" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Mobile Bottom Nav -->
+  <div class="mobile-bottom-nav">
+    <div class="nav-items">
+      <a href="https://wa.me/919765785479" class="nav-item whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="tel:+919765785479" class="nav-item call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+        Call Us
+      </a>
+      <a href="index.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+    </div>
+  </div>
+
+  <!-- ========== LEAD CAPTURE POPUP ========== -->
+  <div class="popup-overlay">
+    <div class="popup-card">
+      <button class="popup-close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="popup-form-container">
+        <div class="popup-header">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+          </div>
+          <h3>Get Free Guidance</h3>
+          <p>Share your details and our counselor will reach out to you shortly.</p>
+        </div>
+
+        <form class="popup-form">
+          <div class="form-group">
+            <label for="popup-name">Full Name *</label>
+            <input type="text" id="popup-name" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="popup-phone">Phone Number *</label>
+            <input type="tel" id="popup-phone" name="phone" class="form-input" placeholder="10-digit phone number" required>
+          </div>
+          <div class="form-group">
+            <label for="popup-email">Email (Optional)</label>
+            <input type="email" id="popup-email" name="email" class="form-input" placeholder="Your email">
+          </div>
+          <div class="form-group">
+            <label for="popup-course">Preferred Course</label>
+            <select id="popup-course" name="course" class="form-input">
+              <option value="">Select a course</option>
+              <option value="CSE">Computer Science Engineering</option>
+              <option value="ISE">Information Science Engineering</option>
+              <option value="ECE">Electronics & Communication</option>
+              <option value="EEE">Electrical & Electronics</option>
+              <option value="ME">Mechanical Engineering</option>
+              <option value="CE">Civil Engineering</option>
+              <option value="AI/ML">AI & Machine Learning</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <label class="form-consent" style="font-size:0.78rem;line-height:1.45;color:#6b7280;margin:0.85rem 0 0;text-align:left;display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" name="consent" required style="margin-top:2px;flex-shrink:0;width:16px;height:16px;accent-color:#0F172A;cursor:pointer;"><span>I hereby authorise <strong>Binayak Consultancy</strong> and its representatives to contact me via phone call, SMS, WhatsApp, or email regarding my enquiry and related educational services.</span></label>
+          <button type="submit" class="btn btn-primary btn-lg">Get Free Guidance</button>
+        </form>
+      </div>
+
+      <div class="popup-success">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Thank You!</h3>
+        <p>Our counselor will contact you shortly to help with your admission journey.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js" defer></script>
+  <script src="js/contact-form.js" defer></script>
+  <script src="js/popup.js" defer></script>
+</body>
+</html>

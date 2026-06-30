@@ -1,0 +1,192 @@
+[
+  {
+    "id": "1778847585519710",
+    "name": "Test User 1",
+    "phone": "9000000001",
+    "email": "u1@test.com",
+    "source": "popup",
+    "exam": "COMEDK",
+    "course": "BTech CSE",
+    "college": "RV College",
+    "status": "new",
+    "priority": "medium",
+    "notes": [],
+    "reminders": [],
+    "activity": [
+      {
+        "type": "created",
+        "text": "Lead captured from popup",
+        "by": "system",
+        "at": "2026-05-15T12:19:45.519Z"
+      }
+    ],
+    "createdAt": "2026-05-15T12:19:45.519Z",
+    "updatedAt": "2026-05-15T12:19:45.519Z"
+  },
+  {
+    "id": "1778847585528403",
+    "name": "Test User 2",
+    "phone": "9000000002",
+    "email": "u2@test.com",
+    "source": "predictor",
+    "exam": "COMEDK",
+    "course": "BTech CSE",
+    "college": "RV College",
+    "status": "new",
+    "priority": "medium",
+    "notes": [],
+    "reminders": [],
+    "activity": [
+      {
+        "type": "created",
+        "text": "Lead captured from predictor",
+        "by": "system",
+        "at": "2026-05-15T12:19:45.528Z"
+      }
+    ],
+    "createdAt": "2026-05-15T12:19:45.528Z",
+    "updatedAt": "2026-05-15T12:19:45.528Z"
+  },
+  {
+    "id": "1778847585536369",
+    "name": "Test User 3",
+    "phone": "9000000003",
+    "email": "u3@test.com",
+    "source": "popup",
+    "exam": "COMEDK",
+    "course": "BTech CSE",
+    "college": "RV College",
+    "status": "new",
+    "priority": "medium",
+    "notes": [],
+    "reminders": [],
+    "activity": [
+      {
+        "type": "created",
+        "text": "Lead captured from popup",
+        "by": "system",
+        "at": "2026-05-15T12:19:45.536Z"
+      }
+    ],
+    "createdAt": "2026-05-15T12:19:45.536Z",
+    "updatedAt": "2026-05-15T12:19:45.536Z"
+  },
+  {
+    "id": "1778847585544770",
+    "name": "Test User 4",
+    "phone": "9000000004",
+    "email": "u4@test.com",
+    "source": "predictor",
+    "exam": "COMEDK",
+    "course": "BTech CSE",
+    "college": "RV College",
+    "status": "new",
+    "priority": "medium",
+    "notes": [],
+    "reminders": [],
+    "activity": [
+      {
+        "type": "created",
+        "text": "Lead captured from predictor",
+        "by": "system",
+        "at": "2026-05-15T12:19:45.544Z"
+      }
+    ],
+    "createdAt": "2026-05-15T12:19:45.544Z",
+    "updatedAt": "2026-05-15T12:19:45.544Z"
+  },
+  {
+    "id": "1778847585551393",
+    "name": "Test User 5",
+    "phone": "9000000005",
+    "email": "u5@test.com",
+    "source": "popup",
+    "exam": "COMEDK",
+    "course": "BTech CSE",
+    "college": "RV College",
+    "status": "new",
+    "priority": "medium",
+    "notes": [],
+    "reminders": [],
+    "activity": [
+      {
+        "type": "created",
+        "text": "Lead captured from popup",
+        "by": "system",
+        "at": "2026-05-15T12:19:45.551Z"
+      }
+    ],
+    "createdAt": "2026-05-15T12:19:45.551Z",
+    "updatedAt": "2026-05-15T12:19:45.551Z"
+  },
+  {
+    "id": "1778847585560844",
+    "name": "Test User 6",
+    "phone": "9000000006",
+    "email": "u6@test.com",
+    "source": "predictor",
+    "exam": "COMEDK",
+    "course": "BTech CSE",
+    "college": "RV College",
+    "status": "won",
+    "priority": "high",
+    "notes": [
+      {
+        "id": "1778847735597",
+        "text": "First contact made — interested in BTech CSE at RV College",
+        "by": "admin",
+        "at": "2026-05-15T12:22:15.597Z"
+      }
+    ],
+    "reminders": [
+      {
+        "id": "1778847737598",
+        "text": "Follow up call",
+        "due": "2026-05-16T04:30:00.000Z",
+        "done": false,
+        "by": "admin",
+        "at": "2026-05-15T12:22:17.598Z"
+      }
+    ],
+    "activity": [
+      {
+        "type": "created",
+        "text": "Lead captured from predictor",
+        "by": "system",
+        "at": "2026-05-15T12:19:45.560Z"
+      },
+      {
+        "type": "status",
+        "text": "Status changed: new → contacted",
+        "by": "admin",
+        "at": "2026-05-15T12:22:13.618Z"
+      },
+      {
+        "type": "priority",
+        "text": "Priority: medium → high",
+        "by": "admin",
+        "at": "2026-05-15T12:22:13.621Z"
+      },
+      {
+        "type": "note",
+        "text": "Note added: \"First contact made — interested in BTech CSE at RV College\"",
+        "by": "admin",
+        "at": "2026-05-15T12:22:15.597Z"
+      },
+      {
+        "type": "reminder",
+        "text": "Reminder set for 16/5/2026, 10:00:00 am: Follow up call",
+        "by": "admin",
+        "at": "2026-05-15T12:22:17.629Z"
+      },
+      {
+        "type": "status",
+        "text": "Status changed: contacted → won",
+        "by": "admin",
+        "at": "2026-05-15T12:22:43.595Z"
+      }
+    ],
+    "createdAt": "2026-05-15T12:19:45.560Z",
+    "updatedAt": "2026-05-15T12:22:43.595Z"
+  }
+]

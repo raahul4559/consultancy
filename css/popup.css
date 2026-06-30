@@ -1,0 +1,156 @@
+/* ============================================================
+   POPUP — Lead capture overlay/card
+   ============================================================ */
+
+/* --- Overlay --- */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42, 0.42);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-popup);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--duration-normal);
+  padding: var(--space-md);
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* --- Popup card --- */
+.popup-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-2xl);
+  transform: translateY(20px) scale(0.95);
+  transition: transform var(--duration-normal) var(--ease-spring);
+  box-shadow: var(--shadow-xl);
+}
+
+.popup-overlay.active .popup-card {
+  transform: translateY(0) scale(1);
+}
+
+
+/* --- Close button --- */
+.popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--bg-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark-tertiary);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.popup-close:hover {
+  background: var(--primary-50);
+  color: var(--text-dark);
+}
+
+.popup-close svg { width: 16px; height: 16px; }
+
+
+/* --- Header --- */
+.popup-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.popup-header .icon-circle {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+}
+
+.popup-header h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-xs);
+  color: var(--text-dark);
+}
+
+.popup-header p {
+  font-size: var(--text-sm);
+  color: var(--text-dark-secondary);
+  margin: 0 auto;
+}
+
+
+/* --- Form --- */
+.popup-form .btn {
+  width: 100%;
+  margin-top: var(--space-sm);
+}
+
+
+/* --- Success state --- */
+.popup-success {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  display: none;
+}
+
+.popup-success.show { display: block; }
+
+.popup-success .check-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background: var(--primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+  animation: scaleIn 0.4s var(--ease-spring);
+}
+
+.popup-success .check-circle svg {
+  width: 32px;
+  height: 32px;
+  color: var(--primary);
+}
+
+.popup-success h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--text-dark);
+}
+
+.popup-success p {
+  font-size: var(--text-sm);
+  color: var(--text-dark-secondary);
+  margin: 0 auto;
+}
+
+
+/* --- Form container toggle --- */
+.popup-form-container { display: block; }
+.popup-form-container.hidden { display: none; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .popup-card { padding: var(--space-xl); max-width: 380px; }
+  .popup-header h3 { font-size: var(--text-lg); }
+}
+
+@media (max-width: 480px) {
+  .popup-overlay { padding: var(--space-sm); }
+  .popup-card { padding: var(--space-lg); border-radius: var(--radius-lg); }
+  .popup-header .icon-circle { width: 48px; height: 48px; }
+}

@@ -1,0 +1,154 @@
+/* ============================================================
+   BASE — Reset, typography, section badges
+   ============================================================ */
+
+/* --- Reset --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--duration-normal) var(--ease-smooth);
+}
+
+/* Inline content links — royal blue with an animated underline on hover */
+p a,
+.accordion-content a,
+.legal-section a,
+.legal-toc a,
+.disclaimer-bar a {
+  color: var(--primary);
+  font-weight: 500;
+  background-image: linear-gradient(var(--primary), var(--primary));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-normal) var(--ease-out), color var(--duration-fast);
+  padding-bottom: 1px;
+}
+p a:hover,
+.accordion-content a:hover,
+.legal-section a:hover,
+.legal-toc a:hover,
+.disclaimer-bar a:hover { background-size: 100% 1.5px; color: var(--primary-dark); }
+
+ul, ol { list-style: none; }
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button { cursor: pointer; }
+
+
+/* --- Headings (Poppins 600–700) --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--text-6xl); font-weight: 700; }
+h2 { font-size: var(--text-4xl); font-weight: 700; }
+h3 { font-size: var(--text-2xl); font-weight: 600; }
+h4 { font-size: var(--text-xl); font-weight: 600; }
+h5 { font-size: var(--text-lg); font-weight: 600; }
+
+
+/* --- Body text --- */
+p {
+  color: var(--text-dark-secondary);
+  line-height: 1.75;
+  max-width: 65ch;
+}
+
+
+/* --- Dark section text overrides (covers both .dark-section and .section.dark) --- */
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+.section.dark h1, .section.dark h2, .section.dark h3, .section.dark h4 { color: #fff; }
+.dark-section p, .section.dark p { color: var(--text-secondary); }
+
+
+/* --- Gradient text --- */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* --- Section badge (pill label) --- */
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: var(--primary-50);
+  color: var(--primary);
+  margin-bottom: var(--space-md);
+}
+
+.section-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+
+/* --- Section title / description --- */
+.section-title { margin-bottom: var(--space-sm); }
+
+.section-desc {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2xl);
+  color: var(--text-dark-secondary);
+}
+
+
+/* --- Selection --- */
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-gray); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dark-tertiary); }

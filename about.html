@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta name="description" content="About Binayak Consultancy — Your trusted partner for higher education guidance and admission support across India. Personalised counselling for B.E. / B.Tech engineering admissions across top colleges.">
+  <title>About Us — Binayak Consultancy</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/mobile.css">
+
+  <style>
+    /* ============================================================
+       ABOUT HERO — premium, centred, image background + parallax
+       ============================================================ */
+    .about-hero {
+      position: relative;
+      min-height: 68vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 80px 0;
+    }
+    /* Background image lives in its own layer so it can zoom + parallax */
+    .about-hero__bg {
+      position: absolute;
+      inset: -12% 0 0 0;
+      z-index: -2;
+      background: #0F172A url('images/rvce-bg.jpg') center 40% / cover no-repeat;
+      transform: scale(1.1);
+      will-change: transform;
+      transition: transform .15s linear;
+    }
+    /* Dark gradient overlay for readability + a soft brand glow up top */
+    .about-hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(120% 80% at 50% 0%, rgba(37, 99, 235, .26), transparent 58%),
+        linear-gradient(180deg, rgba(15, 23, 42, .68) 0%, rgba(15, 23, 42, .82) 55%, rgba(15, 23, 42, .94) 100%);
+    }
+    .about-hero__inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    /* subtle gradient halo behind the text */
+    .about-hero__inner::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 50%; left: 50%;
+      width: 640px; height: 340px; max-width: 92%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(closest-side, rgba(56, 189, 248, .18), transparent 70%);
+      filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .about-hero__label {
+      display: inline-flex; align-items: center;
+      font-family: var(--font-body);
+      font-size: .8rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+      color: #7DD3FC;
+      padding: 8px 18px; border-radius: 999px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .2);
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+      margin-bottom: 24px;
+    }
+    .about-hero__title {
+      font-family: var(--font-display); font-weight: 700; color: #fff;
+      font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 1.04; letter-spacing: -.025em;
+      margin: 0 0 14px;
+      text-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+    }
+    .about-hero__subtitle {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: clamp(1.1rem, 2.4vw, 1.6rem); line-height: 1.35; margin: 0 0 18px;
+      background: linear-gradient(90deg, #38BDF8, #7DD3FC);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .about-hero__desc {
+      max-width: 660px; margin: 0 auto;
+      font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.75;
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .about-hero__cta {
+      display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; justify-content: center;
+    }
+    .about-hero__btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 210px; height: 56px; padding: 0 30px;
+      font-family: var(--font-body); font-size: .98rem; font-weight: 600;
+      border-radius: 14px; cursor: pointer; text-decoration: none;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, filter .22s ease;
+    }
+    .about-hero__btn--primary {
+      color: #fff; border: 0;
+      background: linear-gradient(135deg, #2563EB, #38BDF8);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, .42);
+    }
+    .about-hero__btn--primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(37, 99, 235, .55); filter: brightness(1.05); }
+    .about-hero__btn--ghost {
+      color: #fff; background: rgba(255, 255, 255, .07);
+      border: 1.6px solid rgba(255, 255, 255, .5);
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    }
+    .about-hero__btn--ghost:hover { transform: translateY(-3px); background: rgba(255, 255, 255, .15); border-color: #fff; }
+    .about-hero__btn:active { transform: translateY(-1px) scale(.99); }
+
+    /* fade-in heading + staggered entrance */
+    .about-hero__label,
+    .about-hero__title,
+    .about-hero__subtitle,
+    .about-hero__desc,
+    .about-hero__cta {
+      opacity: 0; transform: translateY(20px);
+      animation: aboutHeroIn .85s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+    .about-hero__label    { animation-delay: .10s; }
+    .about-hero__title    { animation-delay: .24s; }
+    .about-hero__subtitle { animation-delay: .42s; }
+    .about-hero__desc     { animation-delay: .56s; }
+    .about-hero__cta      { animation-delay: .72s; }
+    @keyframes aboutHeroIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .about-hero { min-height: 60vh; padding: 70px 0; }
+    }
+    @media (max-width: 560px) {
+      .about-hero { min-height: auto; padding: 92px 0 76px; }
+      .about-hero__cta { flex-direction: column; width: 100%; max-width: 340px; }
+      .about-hero__btn { width: 100%; min-width: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-hero__bg { animation: none; transform: scale(1.05); }
+      .about-hero__label, .about-hero__title, .about-hero__subtitle,
+      .about-hero__desc, .about-hero__cta { opacity: 1; transform: none; animation: none; }
+    }
+
+    /* ===== About page — modern layout ===== */
+    .ab-split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-3xl); align-items: center; }
+    .ab-split .section-title { margin-bottom: var(--space-md); }
+    .ab-split p { font-size: 1.02rem; line-height: 1.85; color: var(--text-dark-secondary); margin-bottom: var(--space-md); }
+    .ab-points { list-style: none; margin: var(--space-lg) 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ab-points li { display: flex; align-items: center; gap: 10px; font-size: .92rem; font-weight: 600; color: var(--ink); }
+    .ab-points svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; }
+    .ab-media { position: relative; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4 / 3.4; }
+    .ab-media img { width: 100%; height: 100%; object-fit: cover; }
+    .ab-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(15,23,42,.45)); }
+    .ab-media-badge {
+      position: absolute; left: 18px; bottom: 18px; z-index: 2;
+      background: rgba(255,255,255,.96); border-radius: var(--radius-md);
+      padding: 12px 18px; box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ab-media-badge .num { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--primary); line-height: 1; }
+    .ab-media-badge .lbl { font-size: .78rem; color: var(--text-dark-secondary); line-height: 1.25; }
+
+    .ab-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+    .ab-stat { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 26px 18px; text-align: center; box-shadow: var(--shadow-card); transition: transform .25s, box-shadow .25s; }
+    .ab-stat:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+    .ab-stat .ic { width: 50px; height: 50px; margin: 0 auto 12px; border-radius: 14px; background: var(--primary-50); color: var(--primary); display: flex; align-items: center; justify-content: center; }
+    .ab-stat .ic svg { width: 24px; height: 24px; }
+    .ab-stat .num { font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; color: var(--ink); }
+    .ab-stat .lbl { font-size: .85rem; color: var(--text-dark-secondary); margin-top: 2px; }
+
+    .ab-mv { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+    .ab-mv-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-xl); padding: 34px 30px; }
+    .ab-mv-card .ic { width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .ab-mv-card .ic svg { width: 26px; height: 26px; }
+    .ab-mv-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+    .ab-mv-card p { color: rgba(255,255,255,.8); font-size: .98rem; line-height: 1.8; margin: 0; }
+
+    .ab-company { max-width: 960px; margin: 0 auto; background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); overflow: hidden; }
+    .ab-company-head { background: var(--gradient-hero); color: #fff; padding: 24px 30px; }
+    .ab-company-head h3 { color: #fff; font-size: 1.25rem; margin: 0; }
+    .ab-company-grid { padding: 28px 30px; list-style: none; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px 28px; }
+    .ab-company-grid li.full { grid-column: 1 / -1; }
+    .ab-company-grid .k { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--text-dark-tertiary); font-weight: 700; margin-bottom: 5px; }
+    .ab-company-grid .v { color: var(--text-dark); font-size: .98rem; }
+    .ab-company-grid a.v { color: var(--primary); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .ab-split { grid-template-columns: 1fr; gap: var(--space-2xl); }
+      .ab-media { order: -1; aspect-ratio: 16 / 10; }
+      .ab-stats { grid-template-columns: 1fr 1fr; }
+      .ab-mv { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .ab-points { grid-template-columns: 1fr; }
+      .ab-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><span class="brand-wordmark">Binayak<span class="brand-accent"> Consultancy</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link">
+            Colleges
+            <svg class="chevron" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <div class="dropdown-panel">
+            <div class="dropdown-section-label">Engineering Colleges</div>
+            <div class="dropdown-grid">
+              <a href="colleges/rv-college.html" class="dropdown-item">
+                <img src="images/rvce-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">RV University</span>
+              </a>
+              <a href="colleges/ramaiah.html" class="dropdown-item">
+                <img src="images/ramaiah-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Ramaiah Institute of Technology</span>
+              </a>
+              <a href="colleges/bms-college.html" class="dropdown-item">
+                <img src="images/bms-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">BMS College of Engineering</span>
+              </a>
+              <a href="colleges/dayananda-sagar.html" class="dropdown-item">
+                <img src="images/dsce-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Dayananda Sagar College</span>
+              </a>
+              <a href="colleges/nitte.html" class="dropdown-item">
+                <img src="images/nitte-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Nitte Meenakshi Institute</span>
+              </a>
+              <a href="colleges/sir-mvit.html" class="dropdown-item">
+                <img src="images/smvit-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Sir MVIT</span>
+              </a>
+              <a href="colleges/bit.html" class="dropdown-item">
+                <img src="images/bit-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">Bangalore Institute of Technology</span>
+              </a>
+              <a href="colleges/cmrit.html" class="dropdown-item">
+                <img src="images/cmrit-bg.jpg" alt="" class="dropdown-item-thumb" loading="lazy">
+                <span class="dropdown-item-name">CMR Institute of Technology</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="contact.html" class="nav-cta">Get Guidance</a>
+      </div>
+
+      <div class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Panel -->
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <div>
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle">
+        Colleges
+        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <div class="mobile-dropdown-content">
+        <a href="colleges/rv-college.html">RV University</a>
+        <a href="colleges/ramaiah.html">Ramaiah Institute of Technology</a>
+        <a href="colleges/bms-college.html">BMS College of Engineering</a>
+        <a href="colleges/dayananda-sagar.html">Dayananda Sagar College</a>
+        <a href="colleges/nitte.html">Nitte Meenakshi Institute</a>
+        <a href="colleges/sir-mvit.html">Sir MVIT</a>
+        <a href="colleges/bit.html">Bangalore Institute of Technology</a>
+        <a href="colleges/cmrit.html">CMR Institute of Technology</a>
+      </div>
+    </div>
+    <a href="about.html" class="mobile-nav-link active">About Us</a>
+    <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+    <a href="contact.html" class="btn btn-primary btn-sm" style="margin-top: 24px; display: block; text-align: center;">Get Guidance</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="about-hero">
+    <div class="about-hero__bg" aria-hidden="true"></div>
+    <div class="about-hero__overlay" aria-hidden="true"></div>
+    <div class="about-hero__inner">
+      <span class="about-hero__label">About Us</span>
+      <h1 class="about-hero__title">Binayak Consultancy</h1>
+      <p class="about-hero__subtitle">Engineering Admission Guidance &amp; Career Counseling</p>
+      <p class="about-hero__desc">A trusted consultancy helping students secure admission to top engineering colleges through expert guidance, transparent counseling, and personalized support.</p>
+      <div class="about-hero__cta">
+        <a href="tel:+919765785479" class="about-hero__btn about-hero__btn--primary">Talk to a Counselor</a>
+        <a href="contact.html" class="about-hero__btn about-hero__btn--ghost">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT CONTENT ========== -->
+  <section class="section light">
+    <div class="container">
+      <div class="ab-split">
+        <div class="reveal fade-left">
+          <div class="section-badge"><span class="dot"></span> Who We Are</div>
+          <h2 class="section-title">About Binayak Consultancy</h2>
+          <span class="section-accent"></span>
+          <p style="margin-top:var(--space-md)">Binayak Consultancy is an independent <strong>engineering-admissions consultancy</strong> helping students and parents navigate B.E. / B.Tech admissions across Karnataka's top colleges with clarity and confidence.</p>
+          <p>We simplify a complex journey — branch selection, KCET / COMEDK / JEE Main and management-quota pathways, documentation and counselling — with honest, transparent guidance built entirely around the student's goals, not sales targets.</p>
+          <ul class="ab-points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Engineering-only focus</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Independent &amp; unbiased</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Experienced counsellors</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> End-to-end support</li>
+          </ul>
+        </div>
+        <div class="ab-media reveal fade-right">
+          <img src="images/rvce-bg.jpg" alt="Engineering campus" loading="lazy">
+          <div class="ab-media-badge"><span class="num">8+</span><span class="lbl">Partner engineering<br>colleges in Karnataka</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS BAND ========== -->
+  <section class="section light-alt">
+    <div class="container">
+      <div class="ab-stats stagger-children">
+        <div class="ab-stat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/><path d="M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01"/></svg></div>
+          <div class="num">8+</div><div class="lbl">Partner Colleges</div>
+        </div>
+        <div class="ab-stat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="num">100%</div><div class="lbl">Independent &amp; Unbiased</div>
+        </div>
+        <div class="ab-stat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="num">Free</div><div class="lbl">Expert Counselling</div>
+        </div>
+        <div class="ab-stat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <div class="num">2026–27</div><div class="lbl">Admissions Open</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT WE OFFER ========== -->
+  <section class="section light light-section">
+    <div class="container">
+      <div class="text-center mb-3xl">
+        <div class="section-badge"><span class="dot"></span> What We Offer</div>
+        <h2 class="section-title">How We Help <span class="gradient-text">Students</span></h2>
+        <p class="section-desc mx-auto">From the first enquiry to your final enrollment — we walk with you through every stage.</p>
+      </div>
+
+      <div class="services-grid stagger-children">
+        <div class="service-card reveal">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>Personalized Career &amp; Admission Guidance</h4>
+          <p>One-to-one counseling that takes your goals, interests, and academic background into account before recommending a path.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h4>Information About Colleges, Courses &amp; Eligibility</h4>
+          <p>Clear, current information about programs, fees, eligibility criteria, and the institutions worth considering.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h4>Help With Admission Procedures &amp; Applications</h4>
+          <p>Step-by-step assistance with paperwork, deadlines, and the application formalities that often confuse first-time applicants.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>Guidance for Entrance &amp; Management Quota Admissions</h4>
+          <p>Understand how entrance-based and management-quota pathways work, and which option fits your profile.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h4>Support Through Counseling &amp; Enrollment</h4>
+          <p>We stay with you through the counseling rounds, document verification, and final enrollment — so you're never figuring it out alone.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h4>Honest, Transparent Advice</h4>
+          <p>No exaggerated promises. Just realistic options, transparent fees, and ethical recommendations rooted in what's best for the student.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OUR MISSION ========== -->
+  <section class="section dark">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <div class="section-badge"><span class="dot"></span> Mission &amp; Vision</div>
+        <h2 class="section-title">Empowering Students With <span class="gradient-text">the Right Direction</span></h2>
+      </div>
+      <div class="ab-mv">
+        <div class="ab-mv-card reveal fade-left">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3>Our Mission</h3>
+          <p>To empower every student with the right engineering opportunities and help them build a successful future through informed choices and ethical, transparent guidance.</p>
+        </div>
+        <div class="ab-mv-card reveal fade-right">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Our Vision</h3>
+          <p>To be Karnataka's most trusted engineering-admissions partner — known for honesty, student-first counselling, and outcomes that families can rely on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMPANY DETAILS ========== -->
+  <section class="section light-alt">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <div class="section-badge"><span class="dot"></span> Company Details</div>
+        <h2 class="section-title">Get to Know Us</h2>
+        <span class="section-accent center"></span>
+      </div>
+      <div class="ab-company reveal">
+        <div class="ab-company-head"><h3>Binayak Consultancy</h3></div>
+        <ul class="ab-company-grid">
+          <li><span class="k">Company Name</span><span class="v">Binayak Consultancy</span></li>
+          <li><span class="k">Nature of Business</span><span class="v">Independent Engineering Admission Consultancy</span></li>
+          <li class="full"><span class="k">Registered Office</span><span class="v">F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar, Bengaluru, Karnataka – 560092</span></li>
+          <li><span class="k">Phone</span><a class="v" href="tel:+919765785479">+91 97657 85479</a></li>
+          <li><span class="k">Email</span><a class="v" href="mailto:info@binayak.com">info@binayak.com</a></li>
+          <li><span class="k">Website</span><a class="v" href="https://binayak.com">www.binayak.com</a></li>
+          <li><span class="k">Working Hours</span><span class="v">Mon – Sat: 10:00 AM – 6:00 PM · Sun: Closed</span></li>
+          <li><span class="k">Areas Served</span><span class="v">Bengaluru &amp; across India</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="section light light-section">
+    <div class="container">
+      <div class="text-center mb-3xl">
+        <div class="section-badge"><span class="dot"></span> Why Choose Us</div>
+        <h2 class="section-title">Why Choose <span class="gradient-text">Binayak Consultancy</span></h2>
+        <p class="section-desc mx-auto">A few things students and parents say keep them coming back to us.</p>
+      </div>
+
+      <div class="services-grid stagger-children">
+        <div class="service-card reveal">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h4>Student-Focused Counseling Approach</h4>
+          <p>Every recommendation starts from the student's profile, interests, and aspirations — not from a sales target.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Transparent and Reliable Guidance</h4>
+          <p>No hidden conditions, no inflated promises. Just honest information you can act on with confidence.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Support for Reputed Institutions</h4>
+          <p>Guidance across a wide range of trusted engineering colleges so the student can pick the right fit — not what's available.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+          </div>
+          <h4>Dedicated From Inquiry to Enrollment</h4>
+          <p>Your counselor stays with you through the full journey — not just the first call. One point of contact, every step of the way.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h4>Professional &amp; Trustworthy</h4>
+          <p>Built on a commitment to professionalism, ethics, and the long-term success of every student we work with.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="icon-circle emerald">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>Right Direction, Right Time</h4>
+          <p>We believe every student deserves the right direction at the right time — and we're here to help you find it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA BANNER ========== -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2 class="reveal">Ready to Start Your Journey?</h2>
+      <p class="reveal">Get expert guidance for your college admission process. Our counselors are here to help you every step of the way.</p>
+      <div class="cta-buttons reveal">
+        <a href="contact.html" class="btn btn-white btn-lg">Request Guidance</a>
+        <a href="tel:+919765785479" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: #fff;">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DISCLAIMER ========== -->
+  <section class="disclaimer-bar">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> Binayak Consultancy is an independent admission guidance and counseling firm. We are not affiliated with any college or university unless explicitly stated, and final admission decisions rest entirely with the respective institutions.</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><span class="brand-wordmark">Binayak<span class="brand-accent"> Consultancy</span></span>
+          </a>
+          <p>Your trusted guide to engineering college admissions in India. Expert counseling for a brighter future.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/share/1ETuBjN2vb/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/binayakconsultancy" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Colleges</h5>
+          <ul>
+            <li><a href="colleges/rv-college.html">RV University</a></li>
+            <li><a href="colleges/ramaiah.html">Ramaiah IT</a></li>
+            <li><a href="colleges/bms-college.html">BMS College</a></li>
+            <li><a href="colleges/nitte.html">Nitte Meenakshi</a></li>
+            <li><a href="colleges/dayananda-sagar.html">Dayananda Sagar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+            <span>+91-97657-85479</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>info@binayak.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar, Bengaluru, Karnataka 560092</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>Mon - Sat: 10am - 6pm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Binayak Consultancy. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-and-conditions.html">Terms & Conditions</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== FIXED ELEMENTS ========== -->
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919765785479" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Mobile Bottom Nav -->
+  <div class="mobile-bottom-nav">
+    <div class="nav-items">
+      <a href="https://wa.me/919765785479" class="nav-item whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="tel:+919765785479" class="nav-item call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+        Call Us
+      </a>
+      <a href="index.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+    </div>
+  </div>
+
+  <!-- ========== LEAD CAPTURE POPUP ========== -->
+  <div class="popup-overlay">
+    <div class="popup-card">
+      <button class="popup-close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="popup-form-container">
+        <div class="popup-header">
+          <div class="icon-circle blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68a2 2 0 0 1 1.72 2.04z"/></svg>
+          </div>
+          <h3>Get Free Guidance</h3>
+          <p>Share your details and our counselor will reach out to you shortly.</p>
+        </div>
+
+        <form class="popup-form">
+          <div class="form-group">
+            <label for="popup-name">Full Name *</label>
+            <input type="text" id="popup-name" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="popup-phone">Phone Number *</label>
+            <input type="tel" id="popup-phone" name="phone" class="form-input" placeholder="10-digit phone number" required>
+          </div>
+          <div class="form-group">
+            <label for="popup-email">Email (Optional)</label>
+            <input type="email" id="popup-email" name="email" class="form-input" placeholder="Your email">
+          </div>
+          <div class="form-group">
+            <label for="popup-course">Preferred Course</label>
+            <select id="popup-course" name="course" class="form-input">
+              <option value="">Select a course</option>
+              <option value="CSE">Computer Science Engineering</option>
+              <option value="ISE">Information Science Engineering</option>
+              <option value="ECE">Electronics & Communication</option>
+              <option value="EEE">Electrical & Electronics</option>
+              <option value="ME">Mechanical Engineering</option>
+              <option value="CE">Civil Engineering</option>
+              <option value="AI/ML">AI & Machine Learning</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <label class="form-consent" style="font-size:0.78rem;line-height:1.45;color:#6b7280;margin:0.85rem 0 0;text-align:left;display:flex;gap:8px;align-items:flex-start;cursor:pointer;"><input type="checkbox" name="consent" required style="margin-top:2px;flex-shrink:0;width:16px;height:16px;accent-color:#0F172A;cursor:pointer;"><span>I hereby authorise <strong>Binayak Consultancy</strong> and its representatives to contact me via phone call, SMS, WhatsApp, or email regarding my enquiry and related educational services.</span></label>
+          <button type="submit" class="btn btn-primary btn-lg">Get Free Guidance</button>
+        </form>
+      </div>
+
+      <div class="popup-success">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Thank You!</h3>
+        <p>Our counselor will contact you shortly to help with your admission journey.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js" defer></script>
+  <script src="js/popup.js" defer></script>
+
+  <!-- About hero: gentle background parallax on scroll -->
+  <script>
+    (function () {
+      var bg = document.querySelector('.about-hero__bg');
+      if (!bg || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var ticking = false;
+      function update() {
+        var y = window.scrollY || window.pageYOffset;
+        // move the background slower than the page + a touch of zoom = subtle parallax
+        if (y < window.innerHeight) {
+          bg.style.transform = 'scale(' + (1.1 + y * 0.00012).toFixed(3) + ') translateY(' + (y * 0.18).toFixed(1) + 'px)';
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

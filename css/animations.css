@@ -1,0 +1,213 @@
+/* ============================================================
+   ANIMATIONS — Scroll reveal + minimal keyframes
+   ============================================================ */
+
+/* --- Keyframes --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+
+/* --- Scroll reveal base --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.reveal.fade-left {
+  transform: translateX(-20px);
+}
+
+.reveal.fade-right {
+  transform: translateX(20px);
+}
+
+.reveal.scale-in {
+  transform: scale(0.95);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+
+/* --- Stagger children --- */
+.stagger-children .reveal:nth-child(1)  { transition-delay: 0ms; }
+.stagger-children .reveal:nth-child(2)  { transition-delay: 60ms; }
+.stagger-children .reveal:nth-child(3)  { transition-delay: 120ms; }
+.stagger-children .reveal:nth-child(4)  { transition-delay: 180ms; }
+.stagger-children .reveal:nth-child(5)  { transition-delay: 240ms; }
+.stagger-children .reveal:nth-child(6)  { transition-delay: 300ms; }
+.stagger-children .reveal:nth-child(7)  { transition-delay: 360ms; }
+.stagger-children .reveal:nth-child(8)  { transition-delay: 420ms; }
+.stagger-children .reveal:nth-child(9)  { transition-delay: 480ms; }
+.stagger-children .reveal:nth-child(10) { transition-delay: 540ms; }
+
+
+/* --- Hero entrance (home) — staggered fade-up, runs once on load --- */
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-left .hero-badge,
+.hero-left .hero-title,
+.hero-left .hero-subtitle,
+.hero-left .hero-desc,
+.hero-left .hero-buttons,
+.hero-left .hero-stats {
+  opacity: 0;
+  animation: heroEnter 0.7s var(--ease-out) forwards;
+}
+.hero-left .hero-badge    { animation-delay: 0.05s; }
+.hero-left .hero-title    { animation-delay: 0.16s; }
+.hero-left .hero-subtitle { animation-delay: 0.30s; }
+.hero-left .hero-desc     { animation-delay: 0.42s; }
+.hero-left .hero-buttons  { animation-delay: 0.54s; }
+.hero-left .hero-stats    { animation-delay: 0.66s; }
+
+/* --- Card / icon hover micro-interactions (transform+opacity only) --- */
+.stream-card .stream-icon,
+.service-card .icon-circle,
+.why-card .icon-circle,
+.about-stat-icon,
+.counsellor-card-icon {
+  transition: transform 0.3s var(--ease-spring), background 0.3s, color 0.3s;
+}
+.stream-card:hover .stream-icon,
+.service-card:hover .icon-circle,
+.why-card:hover .icon-circle,
+.about-stat-card:hover .about-stat-icon { transform: translateY(-2px) scale(1.08); }
+
+/* College cards: gentle image zoom + link nudge already in sections.css;
+   add a soft press feedback for buttons and pill badges */
+.btn:active { transform: translateY(0) scale(0.98); }
+.faq-help-badge { transition: transform 0.25s var(--ease-out), background 0.25s, border-color 0.25s; }
+.faq-help-badge:hover { transform: translateY(-2px); }
+
+/* Pause the marquee ticker on hover (micro-interaction) */
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .hero-left .hero-badge,
+  .hero-left .hero-title,
+  .hero-left .hero-subtitle,
+  .hero-left .hero-desc,
+  .hero-left .hero-buttons,
+  .hero-left .hero-stats { opacity: 1; animation: none; }
+}
+
+
+/* ============================================================
+   EDITORIAL EFFECTS (ported from the editorial reference)
+   ============================================================ */
+
+/* --- Section accent rule (blue→sky line under headings) --- */
+.section-accent {
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: var(--space-md) 0 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--accent));
+}
+.text-center .section-accent,
+.section-accent.center { margin-left: auto; margin-right: auto; }
+
+/* --- Section-image banner with overlay title --- */
+.section-image {
+  position: relative;
+  height: 220px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-2xl);
+  box-shadow: var(--shadow-md);
+}
+.section-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.section-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,23,42, 0.35), rgba(15,23,42, 0.72));
+}
+.section-image__title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--space-lg);
+}
+.section-image__title h2 {
+  color: #fff;
+  font-size: var(--text-5xl);
+  letter-spacing: 0.01em;
+}
+.section-image__title .title-accent { color: var(--gold); }
+
+/* Letter-split entrance (built by JS) */
+.section-image__title h2 .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.4em);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  transition-delay: calc(var(--i) * 28ms);
+}
+.section-image.is-visible .section-image__title h2 .letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Marquee ticker --- */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  gap: var(--space-2xl);
+  padding: 12px 0;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+.marquee-track span {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(251, 250, 246, 0.78);
+  flex-shrink: 0;
+}
+.marquee-track span::before { content: none; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
