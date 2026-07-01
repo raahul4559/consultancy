@@ -23,14 +23,14 @@
 
 /* Primary — royal-blue → sky-blue gradient */
 .btn-primary {
-  background: var(--gradient-primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--navy-3) 100%);
   color: #fff;
   box-shadow: var(--shadow-blue);
 }
 
 .btn-primary:hover {
   filter: brightness(1.07) saturate(1.05);
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.38);
+  box-shadow: 0 12px 28px rgba(31, 78, 95, 0.38);
   transform: translateY(-2px);
 }
 
@@ -106,8 +106,8 @@
 .icon-circle.green  { background: rgba(31, 107, 58, 0.10);  color: var(--accent-green); }
 .icon-circle.blue   { background: rgba(15,23,42, 0.08);   color: var(--navy); }
 .icon-circle.violet { background: rgba(29, 65, 114, 0.10);  color: var(--navy-3); }
-.icon-circle.orange { background: rgba(37,99,235, 0.09);  color: var(--accent); }
-.icon-circle.amber  { background: rgba(56,189,248, 0.14); color: var(--accent-amber-dark); }
+.icon-circle.orange { background: rgba(245, 158, 11, 0.14);  color: var(--accent-strong); }
+.icon-circle.amber  { background: rgba(138, 185, 181, 0.14); color: var(--accent-amber-dark); }
 .icon-circle svg { width: 24px; height: 24px; }
 
 

@@ -821,7 +821,7 @@
   font-size: var(--text-3xl);
   font-weight: 600;
   line-height: 1;
-  color: var(--accent);
+  color: var(--accent-strong);
   position: relative;
   padding-left: 14px;
 }
@@ -876,14 +876,14 @@
   border-radius: 50%;
   background: var(--surface);
   border: 3px solid var(--accent);
-  box-shadow: 0 0 0 4px rgba(37,99,235, 0.12);
+  box-shadow: 0 0 0 4px rgba(31, 78, 95, 0.12);
 }
 .timeline-step .step-eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-strong);
 }
 .timeline-step h4 { font-size: var(--text-lg); color: var(--ink); margin: 2px 0 4px; }
 .timeline-step p { font-size: var(--text-sm); color: var(--text-dark-secondary); margin: 0; line-height: 1.6; }

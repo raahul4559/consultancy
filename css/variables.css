@@ -1,47 +1,51 @@
 /* ============================================================
-   DESIGN TOKENS — EduVista Consulting
-   Modern education/consultancy theme:
-   Dark Navy (#0F172A) · Royal Blue (#2563EB) · Sky Blue (#38BDF8)
-   Poppins (headings) + Inter (body).
+   DESIGN TOKENS — Binayak Consultancy
+   Unified brand palette (shared with the college pages):
+   Sage Green (#8AB9B5) · Navy (#1F4E5F) · Amber (#F59E0B)
+   Neutrals: #F8FAFC / #FFFFFF backgrounds, #0F172A / #475569 text.
+   Typography: Source Serif 4 (headings) + Inter (body) + JetBrains Mono.
    Token NAMES are preserved so component CSS keeps working;
    only the VALUES changed.
    ============================================================ */
 
 :root {
-  /* --- Primary = royal blue (buttons, links, active states) --- */
-  --primary:         #2563EB;
-  --primary-dark:    #1D4ED8;
-  --primary-light:   #38BDF8;
-  --primary-50:      #EFF6FF;   /* light blue tint — badges */
-  --primary-100:     #DBEAFE;
-  --primary-700:     #1D4ED8;
+  /* --- Primary = navy (buttons, links, active states — needs contrast) --- */
+  --primary:         #1F4E5F;
+  --primary-dark:    #16414F;
+  --primary-light:   #8AB9B5;   /* sage — light brand accent */
+  --primary-50:      #EAF2F1;   /* light sage tint — badges */
+  --primary-100:     #D6E8E5;
+  --primary-700:     #16414F;
 
-  /* --- Accent palette (sky blue) --- */
-  --accent:          #38BDF8;   /* sky blue accent */
-  --accent-dark:     #0EA5E9;
-  --gold:            #2563EB;    /* paired blue for accent gradients */
-  --accent-purple:   #2563EB;
-  --accent-amber:    #38BDF8;
-  --accent-amber-dark:#0EA5E9;
-  --accent-green:    #059669;
-  --accent-violet:   #2563EB;
-  --accent-orange:   #38BDF8;
+  /* --- Accent palette (amber) --- */
+  --accent:          #F59E0B;   /* amber accent */
+  --accent-dark:     #D9860A;
+  --accent-strong:   #B45309;   /* deep amber — for amber text/icons on LIGHT backgrounds (AA-safe) */
+  --gold:            #F59E0B;    /* amber for accent gradients */
+  --accent-purple:   #1F4E5F;
+  --accent-amber:    #F59E0B;
+  --accent-amber-dark:#D9860A;
+  --accent-green:    #2E8B6E;
+  --accent-violet:   #1F4E5F;
+  --accent-orange:   #F59E0B;
+  --sage:            #8AB9B5;
+  --sage-deep:       #4E938C;
 
-  /* --- Dark surfaces (hero, footer, CTA banner) — dark navy --- */
-  --bg-dark:         #0F172A;
-  --bg-dark-alt:     #1E293B;
-  --bg-dark-accent:  #334155;
+  /* --- Dark surfaces (hero, footer, CTA banner) — deep navy --- */
+  --bg-dark:         #0F2A33;
+  --bg-dark-alt:     #1F4E5F;
+  --bg-dark-accent:  #2C6C7E;
 
   /* --- Light surfaces --- */
   --bg-white:        #FFFFFF;
   --bg-light:        #F8FAFC;
-  --bg-gray:         #F1F5F9;
-  --bg-light-alt:    #EEF3FB;
+  --bg-gray:         #EEF3F2;
+  --bg-light-alt:    #EAF2F1;
 
   /* --- Text on light backgrounds --- */
-  --text-dark:           #334155;   /* body */
-  --text-dark-secondary: #64748B;   /* secondary */
-  --text-dark-tertiary:  #94A3B8;   /* tertiary */
+  --text-dark:           #0F172A;   /* headings / strong body */
+  --text-dark-secondary: #475569;   /* body / secondary */
+  --text-dark-tertiary:  #64748B;   /* tertiary */
 
   /* --- Text on dark backgrounds --- */
   --text-primary:   #F8FAFC;
@@ -49,23 +53,23 @@
   --text-tertiary:  #94A3B8;
 
   /* --- Gradients --- */
-  --gradient-hero:    linear-gradient(135deg, #0F172A 0%, #1E293B 55%, #2563EB 100%);
-  --gradient-primary: linear-gradient(135deg, #2563EB 0%, #38BDF8 100%);
-  --gradient-text:    linear-gradient(135deg, #2563EB 0%, #38BDF8 100%);
+  --gradient-hero:    linear-gradient(135deg, #0F2A33 0%, #1F4E5F 55%, #2C6C7E 100%);
+  --gradient-primary: linear-gradient(135deg, #1F4E5F 0%, #8AB9B5 100%);
+  --gradient-text:    linear-gradient(135deg, #1F4E5F 0%, #4E938C 100%);
 
   /* --- Borders --- */
   --border-color:   #E2E8F0;
   --border-light:   #EEF2F7;
 
-  /* --- Shadows — cool blue-tinted --- */
+  /* --- Shadows — navy-tinted --- */
   --shadow-sm:         0 1px 2px rgba(15, 23, 42, 0.05);
   --shadow-card:       0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-card-hover: 0 12px 28px rgba(37, 99, 235, 0.14), 0 4px 10px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 12px 28px rgba(31, 78, 95, 0.14), 0 4px 10px rgba(15, 23, 42, 0.06);
   --shadow-md:         0 4px 14px rgba(15, 23, 42, 0.08);
   --shadow-lg:         0 12px 28px rgba(15, 23, 42, 0.10);
   --shadow-xl:         0 20px 40px rgba(15, 23, 42, 0.12);
   --shadow-2xl:        0 28px 56px -12px rgba(15, 23, 42, 0.22);
-  --shadow-blue:       0 8px 22px rgba(37, 99, 235, 0.30);
+  --shadow-blue:       0 8px 22px rgba(31, 78, 95, 0.30);
 
   /* --- Border radius — modern, premium --- */
   --radius-sm:   8px;
@@ -75,8 +79,8 @@
   --radius-2xl:  24px;
   --radius-full: 9999px;
 
-  /* --- Typography --- */
-  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* --- Typography (matches college pages) --- */
+  --font-display: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
 
@@ -126,13 +130,13 @@
   --z-toast:    600;
 
   /* --- Semantic aliases --- */
-  --navy:    #0F172A;
-  --navy-2:  #1E293B;
-  --navy-3:  #2563EB;
+  --navy:    #1F4E5F;
+  --navy-2:  #16414F;
+  --navy-3:  #2C6C7E;
   --ink:     #0F172A;
   --paper:   #F8FAFC;
   --surface: #FFFFFF;
-  --tint:    #F1F5F9;
+  --tint:    #EAF2F1;
   --rule:    #E2E8F0;
   --rule-2:  #CBD5E1;
 }
