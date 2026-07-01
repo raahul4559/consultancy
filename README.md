@@ -69,8 +69,5 @@ vercel dev
 
 - `MONGODB_URI` — MongoDB Atlas connection string
 
-## Contact
 
-- Phone: +91-8434-106-606
-- Email: myadmissionguide.in@gmail.com
 
