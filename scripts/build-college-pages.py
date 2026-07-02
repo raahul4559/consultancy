@@ -111,7 +111,7 @@ def enquiry_form(c, source, submit_label):
 {states}
               </select>
               <input type="text" name="city" placeholder="Your City" required />
-              <label class="form-consent"><input type="checkbox" name="consent" required /><span>I authorise <strong>Binayak Consultancy</strong> to contact me via call, SMS, WhatsApp or email about my enquiry.</span></label>
+              <label class="form-consent"><input type="checkbox" name="consent" required /><span>I authorise <strong>Shree Vinayak Consultancy</strong> to contact me via call, SMS, WhatsApp or email about my enquiry.</span></label>
               <button type="submit">{submit}</button>
             </form>
             <div class="srm-form-success">
@@ -122,7 +122,7 @@ def enquiry_form(c, source, submit_label):
                              states=STATE_OPTIONS, submit=submit_label)
 
 def wa_link(c):
-    txt = "Hi%20Binayak%20Consultancy%2C%20I'd%20like%20to%20know%20more%20about%20{alias}%20B.Tech%20admissions%20for%202026-27.".format(alias=c["alias"].replace(" ", "%20"))
+    txt = "Hi%20Shree%20Vinayak%20Consultancy%2C%20I'd%20like%20to%20know%20more%20about%20{alias}%20B.Tech%20admissions%20for%202026-27.".format(alias=c["alias"].replace(" ", "%20"))
     return "https://wa.me/919765785479?text=" + txt
 
 def title_name(c):
