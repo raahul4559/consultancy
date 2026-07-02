@@ -19,7 +19,7 @@ Premium educational counseling website helping students navigate admission proce
 
 ## Colleges Covered
 
-1. RV College of Engineering
+1. RV University
 2. Ramaiah Institute of Technology
 3. BMS College of Engineering
 4. Dayananda Sagar College of Engineering
