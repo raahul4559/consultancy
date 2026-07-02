@@ -1,4 +1,4 @@
-# CampusPathway
+
 
 Premium educational counseling website helping students navigate admission processes for top engineering colleges in India.
 
