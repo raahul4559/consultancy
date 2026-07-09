@@ -213,6 +213,60 @@
     .ab-company-grid .v { color: var(--text-dark); font-size: .98rem; }
     .ab-company-grid a.v { color: var(--primary); font-weight: 600; }
 
+    /* ===== Company Registration & Legal Status ===== */
+    .ab-legal-wrap { max-width: 880px; margin: 0 auto; }
+    .ab-legal-card {
+      position: relative; overflow: hidden;
+      background: #fff; border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl); box-shadow: var(--shadow-md);
+      padding: 40px 38px;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .ab-legal-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .ab-legal-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    .ab-legal-top { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+    .ab-legal-ic {
+      width: 60px; height: 60px; flex-shrink: 0; border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, .32);
+    }
+    .ab-legal-ic svg { width: 30px; height: 30px; }
+    .ab-legal-top h3 { font-size: 1.3rem; margin: 0; color: var(--ink); }
+    .ab-legal-card > p {
+      color: var(--text-dark-secondary); line-height: 1.85; font-size: 1.02rem; margin: 0 0 26px;
+    }
+    .ab-legal-grid {
+      list-style: none; margin: 0; padding: 26px 0 0;
+      border-top: 1px solid var(--border-color);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px 28px;
+    }
+    .ab-legal-grid li { display: flex; flex-direction: column; gap: 6px; }
+    .ab-legal-grid li.full { grid-column: 1 / -1; }
+    .ab-legal-grid .k {
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .07em;
+      color: var(--text-dark-tertiary); font-weight: 700;
+    }
+    .ab-legal-grid .v { color: var(--text-dark); font-size: 1rem; font-weight: 600; }
+    .footer-registration {
+      margin: 14px 0 0; font-size: .82rem; line-height: 1.6;
+      color: rgba(255, 255, 255, .6); text-align: center;
+    }
+
+    @media (max-width: 560px) {
+      .ab-legal-card { padding: 30px 22px; }
+      .ab-legal-top { gap: 14px; }
+      .ab-legal-ic { width: 52px; height: 52px; border-radius: 14px; }
+      .ab-legal-ic svg { width: 26px; height: 26px; }
+    }
+
     @media (max-width: 900px) {
       .ab-split { grid-template-columns: 1fr; gap: var(--space-2xl); }
       .ab-media { order: -1; aspect-ratio: 16 / 10; }
@@ -488,6 +542,35 @@
     </div>
   </section>
 
+  <!-- ========== COMPANY REGISTRATION & LEGAL STATUS ========== -->
+  <section class="section light">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <div class="section-badge"><span class="dot"></span> Legal Status</div>
+        <h2 class="section-title">Company Registration &amp; <span class="gradient-text">Legal Status</span></h2>
+        <span class="section-accent center"></span>
+      </div>
+
+      <div class="ab-legal-wrap reveal">
+        <div class="ab-legal-card">
+          <div class="ab-legal-top">
+            <div class="ab-legal-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Officially Registered &amp; Compliant</h3>
+          </div>
+          <p>Sri Vinayaka Consultancy Services Private Limited is officially incorporated under the Companies Act, 2013, reflecting our commitment to transparency, professionalism, and ethical educational guidance.</p>
+          <ul class="ab-legal-grid">
+            <li class="full"><span class="k">Company Name</span><span class="v">Sri Vinayaka Consultancy Services Private Limited</span></li>
+            <li><span class="k">Incorporated</span><span class="v">17 April 2026</span></li>
+            <li><span class="k">Company Type</span><span class="v">Private Limited Company</span></li>
+            <li><span class="k">CIN</span><span class="v">U70200KA2026PTC219376</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== WHY CHOOSE US ========== -->
   <section class="section light light-section">
     <div class="container">
@@ -636,6 +719,7 @@
           <a href="disclaimer.html">Disclaimer</a>
         </div>
       </div>
+      <p class="footer-registration">Sri Vinayaka Consultancy Services Pvt. Ltd. | CIN: U70200KA2026PTC219376 | Registered under the Companies Act, 2013.</p>
     </div>
   </footer>
 
