@@ -9,14 +9,14 @@ const path = require('path');
 
 const OUT_DIR = path.join(__dirname, '..', 'colleges');
 
-const PHONE_DISPLAY = '+91 81006 36959';
-const PHONE_TEL = '+918100636959';
-const PHONE_WA = '918100636959';
-const EMAIL = 'info@eduvistaconsulting.com';
+const PHONE_DISPLAY = '+91 7975672671';
+const PHONE_TEL = '+917975672671';
+const PHONE_WA = '917975672671';
+const EMAIL = 'info@svcsedu.com';
 const BRAND = 'EduVista Consulting';
 const SITE_URL = 'https://eduvistaconsulting.com';
-const ADDRESS = 'F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar, Bengaluru, Karnataka 560092';
-const ADDRESS_SHORT = 'Sahakar Nagar, Bengaluru';
+const ADDRESS = '850, M.C.E Co-operative Society Ltd., Sahakarnagar, Sahakaranagar P.O., Bangalore North, Bangalore – 560092, Karnataka.';
+const ADDRESS_SHORT = '850, M.C.E Co-operative Society Ltd., Sahakarnagar, Sahakaranagar P.O., Bangalore North, Bangalore – 560092, Karnataka.';
 
 const colleges = [
   {
@@ -246,8 +246,8 @@ function render(c) {
         email: EMAIL,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'F11, D Block, Fortuna Icon Apartment, Sahakarnagar Main Rd, F Block, Sahakar Nagar',
-          addressLocality: 'Bengaluru',
+          streetAddress: '850, M.C.E Co-operative Society Ltd., Sahakarnagar, Sahakaranagar P.O., Bangalore North',
+          addressLocality: 'Bangalore',
           addressRegion: 'Karnataka',
           postalCode: '560092',
           addressCountry: 'IN',
